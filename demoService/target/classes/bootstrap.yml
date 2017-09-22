@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: timer
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: config
+eureka:
+    instance:
+      prefer-ip-address: true
+      metadataMap:
+       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    client:
+     registerWithEureka: true
+     fetchRegistry: true
+     service-url:
+       defaultZone: http://localhost:8762/eureka/
+server:
+  port: 8075

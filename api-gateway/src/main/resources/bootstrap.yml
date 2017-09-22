@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: gateway
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        serviceId: config
+#  zipkin:
+#    base-url: http://10.96.83.12:9411
+#    enabled: true
+#  sleuth:
+#    enabled: true
+#    sampler:
+#      percentage: 1.0
+eureka:
+    instance:
+      preferIpAddress: true
+      metadata-map:
+           instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    client:
+      registerWithEureka: true
+      fetch-registry: true
+      service-url:
+        defaultZone: http://localhost:8762/eureka/
